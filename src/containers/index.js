@@ -1,12 +1,7 @@
-// https://github.com/diegohaz/arc/wiki/Atomic-Design#do-not-worry
-const req = require.context('.', true, /\.\/[^/]+\/[^/]+\/index\.js$/)
-
-console.log('ok2 ----------------------------------------------------------------')
-console.log(req)
+// https://github.com/diegohaz/arc/wiki/Containers
+const req = require.context('.', false, /^((?!index).)*\.js$/)
 
 req.keys().forEach((key) => {
-  const componentName = key.replace(/^.+\/([^/]+)\/index\.js/, '$1')
-  console.log('ok ----------------------------------------------------------------')
-  console.log(componentName)
-  module.exports[componentName] = req(key).default
+  const containerName = key.replace(/^\.\/([^.]+)\.js$/, '$1')
+  module.exports[containerName] = req(key).default
 })

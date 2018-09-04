@@ -1,10 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
+const getFullUrl = endDir => path.join(process.cwd(), endDir)
 
 const config = {
   entry: './src/index.js',
   output: {
-    path: path.join(process.cwd(), 'dist'),
+    path: getFullUrl('dist'),
     filename: 'build.js'
   },
   module: {
@@ -20,7 +23,24 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
+  },
+  resolve: {
+    alias: {
+      components: getFullUrl('src/components/'),
+      containers: getFullUrl('src/containers/')
+    }
+  }
 }
 
 module.exports = config
