@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+body {
+    margin: 1rem;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    height: 6rem;
+    margin: .5rem 0;
+}
+
+.page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-menu {
+    display: flex;
+    align-items: flex-start;
+}
+
+.edit-menu > button {
+    margin-top: .5rem;
+}
+
+.staff-list__item {
+    margin-bottom: 1rem;
+}
+
+.staff-control-list {
+    width: 14rem;
+    padding: 1rem;
+    background-color: #eee;
+    margin-left: 1rem;
+}
+
+.staff-control-list > button {
+    margin-top: auto;
+}
+
+.staff-control-list__item {
+    width: 100%;
+    margin-bottom: 2rem;
+}
